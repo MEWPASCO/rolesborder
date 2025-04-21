@@ -1,5 +1,5 @@
 :root {
-  --opacity-role-design: 1;
+  --opacity-role-design: 100%;
 }
 
 /* Target the role elements and apply styles */
