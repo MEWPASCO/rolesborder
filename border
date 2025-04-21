@@ -37,7 +37,7 @@
   -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   /* Optional, change the opacity with changing the 1 to values like 0.4 */
-  opacity: var(--opacity-role-design)!important;
+  opacity: var(--opacity-role-design) !important;
 }
 
 /* Fix the text being too blurry */
