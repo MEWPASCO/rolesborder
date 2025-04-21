@@ -35,6 +35,6 @@ Put this into your QuickCSS (Or any non-Vencord equivalent) to configure some be
 ```css
 /* RolesBorder */
 :root {
-  --opacity-role-design: 1!important;
+  --opacity-role-design: 100%!important;
 }
 ```
