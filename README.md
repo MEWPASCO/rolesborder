@@ -28,3 +28,13 @@ Paste this into your QuickCSS (Or any non-Vencord equivalent) to make it a littl
 ```
 
 Alternatively if your client does not support online themes you can download the theme file found in this repository and put it into your theme folder.
+
+# Configuration
+
+Put this into your QuickCSS (Or any non-Vencord equivalent) to configure some behavior of this theme:
+```css
+/* RolesBorder */
+:root {
+  --opacity-role-design: 1!important;
+}
+```
