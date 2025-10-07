@@ -55,3 +55,35 @@
 .roleNameOverflow_27401 {
   color: hsl(0, 0%, 75%);
 }
+
+/* === Base Roll Pill inside Adding Role Menu === */
+.item__97e86 {
+  transform: none;
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  overflow: visible;
+  padding: 8px;
+}
+
+/* === Decorative Border Layer Using Pseudo === */
+.item__97e86 ::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  box-sizing: border-box;
+  opacity: var(--opacity-role-design);
+  pointer-events: none;
+
+  /* Mask trick for glow cutout */
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+}
+
+/* === Text Contrast Fix === */
+.itemLabel__97e86 {
+  color: hsl(0, 0%, 75%);
+}
