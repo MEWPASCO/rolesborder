@@ -1,8 +1,8 @@
 /**
  * @name RolesBorder
  * @author Wolfÿ
- * @version 1.1
- * @description Gives Roles on a Userprofile some different design
+ * @version 1.2
+ * @description Outlines the roles on a user profile with their role color
  * @invite avia
  * @source https://github.com/MEWPASCO/rainbowglow-avatars
  * @website https://www.avariaxyz.win/
@@ -12,8 +12,13 @@
   --opacity-role-design: 1; /* Use decimal (1 = 100%) for better compatibility */
 }
 
+/*
+ * Discord class names carry a build hash (e.g. role_af3987) that changes with
+ * updates, so everything below matches on the stable part before the hash.
+ */
+
 /* === Base Role Pill === */
-.role_af3987 {
+:is([class^="role_"], [class*=" role_"]) {
   transform: none;
   border: none;
   border-radius: 5px;
@@ -23,19 +28,19 @@
 }
 
 /* === Remove Icon === */
-.role_af3987 .roleRemoveIcon_af3987 {
+:is([class^="role_"], [class*=" role_"]) [class*="roleRemoveIcon_"] {
   left: 18px;
   transform: translate(-50%, -50%);
   margin: 0;
 }
 
 /* === Reset Remove Button Position === */
-.role_af3987 .roleRemoveButton_af3987 {
+:is([class^="role_"], [class*=" role_"]) [class*="roleRemoveButton_"] {
   position: static;
 }
 
 /* === Decorative Border Layer Using Pseudo === */
-.role_af3987 .roleCircle__4f569::before {
+:is([class^="role_"], [class*=" role_"]) [class*="roleCircle_"]::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -46,21 +51,23 @@
   opacity: var(--opacity-role-design);
   pointer-events: none;
 
-  /* Mask trick for glow cutout */
+  /* Mask trick: cut out the padding box so only the 2px border shows */
   -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
 }
 
-/* === Text Contrast Fix === */
-.roleName_af3987 {
+/* === Text Contrast Fix (dark themes only, light themes keep Discord's text color) === */
+.theme-dark [class*="roleName_"] {
   color: hsl(0, 0%, 95%) !important;
   position: relative;
   z-index: 1;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* === Base Roll Pill inside Adding Role Menu === */
-.listBoxItemContent__2e223 {
+/* === Base Role Pill inside Adding Role Menu === */
+[class*="listBoxItemContent_"] {
   transform: none;
   border: none;
   border-radius: 5px;
@@ -69,8 +76,10 @@
   padding: 2px 6px;
 }
 
-/* === Decorative Border Layer Using Pseudo === */
-.listBoxItemContent__2e223 ::before {
+/* === Decorative Border Layer inside Adding Role Menu ===
+   NOTE: the space before ::before means "::before of every descendant".
+   Kept as in v1.1; if it works, narrow it to the specific child element. */
+[class*="listBoxItemContent_"] ::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -81,7 +90,8 @@
   opacity: var(--opacity-role-design);
   pointer-events: none;
 
-  /* Mask trick for glow cutout */
   -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
 }
